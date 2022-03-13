@@ -31,3 +31,16 @@ class Doctors(models.Model):
 
     def __str__(self):
         return (self.first_name + " " + self.last_name)
+
+class Insurances(models.Model):
+    insurance = models.CharField(max_length=32,blank=False,null=False)
+
+    def __str__(self):
+        return self.insurance
+
+contracts = (
+        ("Tinnitus", "Tinnitus"),
+        ("Hello Baby","Hello baby"),
+        ("Schmerztherapie", "Schmerztherapie"),
+        ("Hautkrebsscreening", "Hautkrebsscreening"),
+        )
