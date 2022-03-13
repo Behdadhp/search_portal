@@ -44,3 +44,15 @@ contracts = (
         ("Schmerztherapie", "Schmerztherapie"),
         ("Hautkrebsscreening", "Hautkrebsscreening"),
         )
+
+class Details(models.Model):
+    street       = models.CharField(max_length=64,blank=False,null=False)
+    house_number = models.CharField(max_length=8,blank=False,null=False)
+    postal_code  = models.CharField(max_length=8,blank=False,null=False)
+    city         = models.CharField(max_length=32,blank=False,null=False)
+    insurance    = models.ManyToManyField(Insurances)
+    name         = models.OneToOneField(Doctors,on_delete=models.CASCADE)
+    contract     = models.CharField(max_length=32,choices=contracts)
+
+    def __str__(self):
+        return self.street
