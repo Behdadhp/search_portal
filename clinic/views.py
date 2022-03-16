@@ -23,3 +23,8 @@ class SearchResultView (generic.TemplateView ,LoginRequiredMixin):
         context["clinic_lists"] = clinic_lists
 
         return context
+
+class ClinicDetailsView(generic.DetailView, LoginRequiredMixin):
+    context_object_name = 'clinic_details'
+    model = models.Details
+    template_name = 'clinic/clinic_details.html'
