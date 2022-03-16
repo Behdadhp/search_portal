@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="row text-center top30">
+    <div class="col-sm-12">
+    <form class="d-flex" action="{% url 'clinic:search' %}" method="GET">
+      <input class="form-control" type="search" name="s" placeholder="Suchen..." >
+      <button class="btn btn-outline-success"  type="submit">Suchen</button>
+      <a href="{% url 'clinic:clinic' %}" class="btn btn-danger">Reset</a>
+    </form>
+</div>
+</div>
+
+      <div class="row text-center top100">
+    <div class="col-sm-3">
+      <table class="table table-striped">
+        <thead>
+          <td>Id</td>
+          <td>Straße</td>
+          <td>PLZ</td>
+          <td>Stadt</td>
+          <td>Versichrung</td>
+          <td>Fachgruppe</td>
+          <td>Vertrag</td>
+        </thead>
+        {% for item in clinic_lists %}
+        <tr>
+          <td>{{item.id}}</td>
+          <td> <a href="{% url 'clinic:details' pk=item.pk %}">{{item.street}} {{item.house_number}}</a></td>
+          <td>{{item.postal_code}}</td>
+          <td>{{item.city}}</td>
+          <td>{{item.insurance.all|join:", "}}</td>
+          <td>{{item.specialist_group}}</td>
+          <td>{{item.contract}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      <h4>{{details}}</h4>
+
+    </div>
+
+</div>
+</div>
+
+
+{% endblock %}
