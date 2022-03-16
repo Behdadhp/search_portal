@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="row text-center top30">
+    <div class="col-sm-12">
+    <form class="d-flex" action="{% url 'clinic:search' %}" method="GET">
+      <input class="form-control" type="search" name="s" placeholder="Suchen..." >
+      <button class="btn btn-outline-success"  type="submit">Suchen</button>
+      <a href="{% url 'clinic:clinic' %}" class="btn btn-danger">Reset</a>
+    </form>
+</div>
+</div>
+
+      <div class="row text-center top100">
+    <div class="col-sm-12">
+      <table class="table table-striped">
+        <thead>
+          <td>Anrede</td>
+          <td>Titel</td>
+          <td>Vorname</td>
+          <td>Nachname</td>
+          <td>Email</td>
+          <td>Versicherung</td>
+          <td>Fachgruppe</td>
+          <td>Vertrag</td>
+          <td>Straße</td>
+          <td>PLZ</td>
+          <td>Stadt</td>
+        </thead>
+        <tr>
+          <td>{{clinic_details.name.gender}}</td>
+          <td>{{clinic_details.name.title}}</td>
+          <td>{{clinic_details.name.first_name}}</td>
+          <td>{{clinic_details.name.last_name}}</td>
+          <td>{{clinic_details.name.mail}}</td>
+          <td>{{clinic_details.insurance.all|join:", "}}</td>
+          <td>{{clinic_details.specialist_group}}</td>
+          <td>{{clinic_details.contract}}</td>
+          <td>{{clinic_details.street}} {{clinic_details.house_number}}</td>
+          <td>{{clinic_details.postal_code}}</td>
+          <td>{{clinic_details.city}}</td>
+        </tr>
+      </table>
+      <h4>{{details}}</h4>
+
+    </div>
+
+</div>
+</div>
+
+
+{% endblock %}
