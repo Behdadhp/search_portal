@@ -1,4 +1,4 @@
-"""sana_key_portal URL Configuration
+"""Sanakey_Portal URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -14,8 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path , include
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.IndexView.as_view(), name='index'),
+    path('accounts/',include('accounts.urls',namespace='accounts')),
+    path('accounts/', include("django.contrib.auth.urls",)),
+    path('welcome/',views.WelcomePage.as_view(), name='welcome'),
+    path('thanks/', views.ThanksPage.as_view(), name='thanks'),
+    path('clinic/',include('clinic.urls',namespace='clinic'))
 ]
