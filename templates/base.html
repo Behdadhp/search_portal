@@ -4,7 +4,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
-    <title>Crypto</title>
+    <title>SanakeyPortal</title>
     <!-- Bootstrap5 -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -25,19 +25,13 @@
     />
 
     <!-- CSS -->
-    <link
-      rel="stylesheet"
-      href="{% static 'crypto_website/css/master.css' %}"
-    />
 
-    <link
-      rel="stylesheet"
-      href="path/to/font-awesome/css/font-awesome.min.css"
-    />
+<link rel="stylesheet" href="{% static 'css\base.css' %}">
+
   </head>
   <body id="my-font">
     <nav
-      class="navbar navbar-expand-sm sticky-xl-top navbar-dark bg-dark"
+      class="navbar navbar-expand-sm navbar-light bg-light"
       role="navigation"
     >
       <div class="container-fluid">
@@ -64,16 +58,19 @@
                   >Home</a
                 >
               </li>
+              <li class="nav-item">
+                <a class="navbar-nav nav-link" href="{% url 'clinic:clinic' %}"
+                  >Clinic</a
+                >
+              </li>
               <li class="nav-item d-flex">
                 <a
                   class="navbar-nav nav-link"
                   href="{% url 'accounts:logout' %}"
                   >Logout</a
                 >
-              </li class="nav-item d-flex">
-              <li>
-                <img src="Sanakey_Portal\static\sanakey-portal.png"  alt="Flowers in Chania" class="logo ng-tns-c157-0">
               </li>
+              <li class="d-flex"><img class="me-2" src="{% static 'images/sanakey-portal.png' %}" width="150" height="50px" alt="not working"></li>
               {% else %}
               <li class="nav-item">
                 <a class="navbar-nav navbar-brand" href="{% url 'index' %}"
@@ -92,13 +89,14 @@
                   >Sign up</a
                 >
               </li>
+              <li class="d-flex"><img class="me-2" src="{% static 'images/sanakey-portal.png' %}" width="150" height="50px" alt="not working"></li>
+
               {% endif %}
             </ul>
           </div>
         </div>
       </div>
     </nav>
-    <img src="{% static 'images\index.jpg' %}" alt="Sanakey Portal">
   </body>
 </html>
 
