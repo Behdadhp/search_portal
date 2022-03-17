@@ -28,3 +28,10 @@ class ClinicDetailsView(generic.DetailView, LoginRequiredMixin):
     context_object_name = 'clinic_details'
     model = models.Details
     template_name = 'clinic/clinic_details.html'
+
+
+def location(address,api_key):
+    geolocator = GoogleV3(api_key)
+    location = geolocator.geocode(address)
+
+    return (location.latitude,location.longitude)
